@@ -1,0 +1,157 @@
+$def with(form)
+  <head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <style>
+		input {
+		height: 24px;
+		width: 535px;
+		font-size: 20px;
+		}
+		table {
+		font-family: '微软雅黑', '宋体', '黑体';
+		}
+		td {
+		background-color: rgb(249,252,255);
+		height: 24px;
+		width: 535px;
+		}
+		td:hover {
+		background-color: rgb(168,213,252);
+		cursor: default;
+		}
+      
+	      * {
+			box-sizing:border-box;}
+		body {
+			margin:0;
+			padding:0;
+			background-image:url(ydrzimages/p3.jpg);
+			font-weight:500;
+			font-family: '微软雅黑', '宋体', '黑体';
+		}
+		#container {
+			width:500px;
+			height:820px;
+			margin:0 auto;
+		}
+		div.search {
+			padding:10px 0;
+		}
+		form {
+			position:relative;
+			width:300px;
+			margin:0 auto;
+		}
+		input,button {
+			border:none;
+			outline:none;
+		}
+		input {
+			width:100%;
+			height:42px;
+			padding-left:13px;
+		}
+		button {
+			height:42px;
+			width:42px;
+			cursor:pointer;
+			position:absolute;
+		}
+		.bar6 input {
+			border:2px solid #c5464a;
+			border-radius:5px;
+			background:transparent;
+			top:0;
+			right:0;
+		}
+		.bar6 button {
+			background:#c5464a;
+			border-radius:0 5px 5px 0;
+			width:60px;
+			top:0;
+			right:0;
+		}
+		.bar6 button:before {
+			content:"搜索";
+			font-size:13px;
+			color:#F9F0DA;
+		}
+    </style>
+  </head>
+
+  <body>
+  	<h1 align="center" > 网页  <a href="/im">图片</a>  </h1>
+	<div id="container">
+		<div class="search bar6">
+			<form action="/s" method="GET">
+    		<input type="text" id='txt' name="keyword" placeholder="关键词" >
+    		<button type="submit"  name="search" value="搜索"></button>
+			</form>
+		</div>
+	
+	
+    <table cellpadding='2' cellspacing='0'>
+      <tbody>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+        <tr><td></td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <script>
+      function hideTds() {
+        var tds = document.querySelectorAll('td');
+        for (var i = 0; i < 10; i++) {
+          tds[i].style.display = 'none';
+        }
+      }
+      hideTds();
+      document.querySelector('#txt').onkeyup = function() {
+        var tds = document.querySelectorAll('td');
+        for (var i = 0; i < 10; i++) {
+          tds[i].innerHTML = '';
+        }
+        hideTds();
+        if (this.value.trim() === '') {
+          return;
+        }
+        
+        var s = document.createElement('script');
+        
+        s.src = 'http://0.0.0.0:8080/jt?command=' + encodeURI(this.value.trim());
+        
+        document.body.appendChild(s);
+      };
+      function fn(data) {
+        var tds = document.querySelectorAll('td');
+        data.s.forEach(function(item, index) {
+          tds[index].style.display = '';
+          tds[index].innerHTML = item;
+        });
+        // delete scripts
+        var s = document.querySelectorAll('script');
+        for (var i = 1, len = s.length; i < len; i++) {
+          document.body.removeChild(s[i]);
+        }
+      }
+      document.querySelector('tbody').onclick = function(e) {
+        var wd = e.target.innerHTML;
+        window.open('http://0.0.0.0:8080/s?keyword=' + encodeURI(wd))+'&search=搜索';
+      };
+
+      document.onclick = function(e) {
+        if (e.target === document.body) {
+          hideTds();
+        }
+      }
+    </script>
+  </body>
+</html>

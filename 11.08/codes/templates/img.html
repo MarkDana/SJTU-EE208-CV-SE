@@ -1,0 +1,71 @@
+$def with (form,keyword,finalDocs)
+<html>
+<head>
+<style type="text/css">
+    div.front
+{
+        text-align:center;
+        background-color:lightcyan;
+        border:3px solid gray;
+        width:60%;
+        margin-left:auto;
+        margin-right:auto;
+
+}
+div.outlayer
+{
+     margin-left:auto;
+     margin-right:auto;
+    text-align:center;
+     background-color:antiquewhite;
+     border:1px solid gray;
+     width:100%;
+}
+    div.innerlayer
+{width:19%;
+height:420px;
+float:left;
+        border:0.25px solid gray;}
+
+    [src]
+    {
+        width: 100%;
+        height:auto;
+    }
+
+    [src]:hover
+    {
+        opacity:0.5
+    }
+    div.font
+    {text-align:center;
+    height:auto;}
+</style>
+</head>
+
+
+<body>
+<h1 align="center" >  <a href="/">网页</a> 图片 </h1>
+<div align="center">
+<form action="/i" method="GET">
+<input type="text" name="keyword" value=$keyword ><input type="submit"  name="search" value="搜索"><br>
+</form>
+
+</div>
+
+<br><br>
+$if len(finalDocs)==0:
+   <em> 暂无搜索结果</em>
+
+$else:
+    <div class="outlayer">
+    $for oneDic in finalDocs:
+        <div class="innerlayer">
+        <a href="$oneDic['itemurl']"><img src="$oneDic['imgurl']"></a>
+        <a href="$oneDic['itemurl']">$oneDic['title']</a>
+        </div>
+
+</div>
+</body>
+
+</html>

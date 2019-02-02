@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Shanghai Jiao Tong University</title>
+    <script src="../js/jquery-1.8.0.min.js" type="text/javascript"></script>
+    <script src="../js/jquery-ui-1.8.23.custom.min.js" type="text/javascript"></script>
+
+    <link href="jqAutoCompelete/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
+    <link href="jqAutoCompelete/demos.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/Style.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+    .STYLE1 {color: #000000}
+    
+    .adddianji
+    {
+        background-color:#A22B3F;
+        }  
+    </style>
+        <script type="text/javascript">
+            $(function () {
+                $('#tabs').tabs({
+                    select: function (event, ui) {
+                        switch (ui.index) {
+                            case 0:
+                                if (document.getElementById("if1").style.visibility == "hidden") {
+                                    document.getElementById("if1").style.visibility = "visible";
+                                    document.getElementById("if2").style.visibility = "hidden";
+                                    document.getElementById("if2").src = "";
+                                    document.getElementById("if3").style.visibility = "hidden";
+                                    document.getElementById("if3").src = "";
+                                }
+                                break;
+                            case 1:
+                                if (document.getElementById("if2").style.visibility == "hidden") {
+                                    document.getElementById("if2").src = "../tour/xiaoyuanmanyou/t.html";
+                                    document.getElementById("if2").style.visibility = "visible";
+                                    document.getElementById("if1").style.visibility = "hidden";
+                                    document.getElementById("if3").style.visibility = "hidden";
+                                }
+                                break;
+                            case 2:
+                                if (document.getElementById("if3").style.visibility == "hidden") {
+                                    document.getElementById("if3").src = "baidu_en.htm";
+                                    document.getElementById("if3").style.visibility = "visible";
+                                    document.getElementById("if1").style.visibility = "hidden";
+                                    document.getElementById("if2").style.visibility = "hidden";
+                                    document.getElementById("if2").src = "";
+                                }
+                                break;
+                            default: break;
+
+                        }
+                    }
+                });
+
+                $("#tabs ul li a").click(function () {
+                    $(this).addClass("adddianji");
+                    $("#tabs ul li a").not($(this)).removeClass("adddianji");
+                });
+
+            })        
+    </script>
+</head>
+<body>
+    <div id="header">
+        <a href="http://en.sjtu.edu.cn/" title="Shanghai Jiao Tong University" target="_blank">
+        <img id="logo1"src="../images/sj_en1.png" style=" height:95px;" alt="交大logo" /></a>
+        <img id="logo2"src="../images/sj_en2.png" style=" height:95px;"  alt="交大logo" />
+    </div>
+    <!--切换区域-->
+    <div id="tabs">
+	    <ul style="background-color:#1D549C;">
+		    <li><a href="#tabs-1" id="3dcmp" style="color:White; font-weight:bold;">3DCampus</a></li>
+		    <li><a href="#tabs-2" style="color:White;font-weight:bold;">Panorama</a></li>
+            <li><a href="#tabs-3" style="color:White;font-weight:bold;">Baidu Map</a></li>
+            <p align="right">
+            <span><a style="color:White; text-decoration:none;" href="../index.htm">Chinese Version</a></span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <select style="text-align:right" onchange="window.open(this.options[this.selectedIndex].value)">
+                <option value="http://3dcampus.sjtu.edu.cn/index.html">Minhang Campus</option>
+                <option value="http://www.sjtu.edu.cn/zdh/jdgk/xydy/xhxq.htm">Xuhui Campus</option>
+                <option value="http://www.sjtu.edu.cn/zdh/jdgk/xydy/fhxq.htm">Fahua Campus</option>
+                <option value="http://www.sjtu.edu.cn/zdh/jdgk/xydy/qbxq.htm">Qibao Campus</option>
+                <option value="http://www.sjtu.edu.cn/zdh/jdgk/xydy/lwxq.htm">Luwan Campus</option></select></p>
+	    </ul>
+        <div id="tabs-1">
+            <iframe id="if1" src="map_en.htm" scrolling="no">
+            </iframe>        
+        </div>
+	    <div id="tabs-2">
+		    <iframe id="if2" style=" visibility:hidden;" scrolling="no" ></iframe>
+	    </div>
+        <div id="tabs-3">
+            <iframe id="if3" style=" visibility:hidden;"  scrolling="no" ></iframe>
+        </div>
+    </div>
+    <div id="footer">
+        <div align="center" style=" font-size:12px;">
+        <div align="center">Feedback：<a href="http://topics.sjtu.edu.cn/xcb/" target="_blank">Propaganda Department of the Party committees</a> Technical Support and Feedback：<a href="http://net.sjtu.edu.cn/" target="_blank">Network Information Center</a> <a href="http://smd.sjtu.edu.cn/" target="_blank">Faculty of Media and Design</a>  <a href="http://www.acein.org/" target="_blank">涵景信息</a></div>
+<script src="http://s23.cnzz.com/stat.php?id=3535401&web_id=3535401&show=pic1" language="JavaScript"></script>
+        </div>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+    window.onload = function () {
+
+        $("#3dcmp").addClass("adddianji");
+
+        map_width = document.body.clientWidth; //获取body宽度
+        if (map_width > 450) {
+            map_width = map_width - 435;
+            document.getElementById("logo2").style.width = map_width + "px";
+        }       
+    }
+
+    window.onresize = function () {
+        map_width = document.body.clientWidth; //获取body宽度
+        if (map_width > 450) {
+            map_width = map_width - 435;
+            document.getElementById("logo2").style.width = map_width + "px";
+        }
+    }
+</script>

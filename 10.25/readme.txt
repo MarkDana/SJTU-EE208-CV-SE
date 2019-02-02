@@ -1,0 +1,13 @@
+IndexTexts.py:对文本进行索引(没有html，无法运行)
+SearchFiles.py:搜索文本(可运行)
+IndexImages.py:对图片进行索引(可运行)
+SearchImages.py:搜索图片(可运行)
+ParseJD.py:对京东静态网页爬虫
+ParseDynamic.py:对LOFTER动态网页模拟访问爬虫
+ParseLOFTER.py:动态爬虫的另一个实例
+textindex:储存文本信息索引
+jdindex:储存图片信息索引
+jdindex.txt:爬到的京东图片原始信息
+lofterindex.txt:爬到的动态LOFTER原始信息
+pages.txt:爬到的文本网页原始信息
+demo.gif:演示模拟访问动态网页
